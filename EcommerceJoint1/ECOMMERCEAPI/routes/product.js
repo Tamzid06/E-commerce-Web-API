@@ -1,0 +1,86 @@
+const res = require("express/lib/response");
+const Product = require("../models/Product");
+const { verifyTokenAndAdmin } = require("./verifyToken");
+const router = require("express").Router();
+
+
+//Get product by id
+
+router.get("/find/:id",async (req,res) => {
+    try{
+        const product = await Product.findById(req.params.id);
+        console.log("PRODUCTS DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        res.status(200).json(product);
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
+//Create
+
+router.post("/add/", async(req,res) => {
+    console.log("____________________________________");
+    console.log(req.body);
+    const newProduct = new Product(req.body);
+    try{
+        const savedProduct = await newProduct.save();
+        
+        res.status(200).json(savedProduct);
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
+
+//Update Products
+
+router.put("/:id",verifyTokenAndAdmin,async (req,res) =>{
+    try{
+        const updatedProduct = await Product.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: req.body,
+            },
+            {new: true}
+        );
+        res.status(200).json(updatedProduct);
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
+
+//Delete
+
+router.delete("/:id",verifyTokenAndAdmin,async (req,res) => {
+    try{
+        await Product.findByIdAndDelete(req.params.id);
+        res.status(200).json("Product Has Been Deleted");
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
+
+
+
+// GET ALL products
+
+router.get("/",async (req,res) => {
+    const qCategory = req.query.category;
+    try{
+        let products;
+        if(qCategory){
+            products = await Product.find({
+                categories: {
+                    $in: [qCategory],
+                },
+        });
+
+        }else{
+            products = await Product.find();
+        }
+        res.status(200).json(products);
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
+module.exports = router
