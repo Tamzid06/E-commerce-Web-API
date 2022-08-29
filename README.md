@@ -18,7 +18,7 @@ npm install axios
   
 Except running all these ,we can also just run  
 npm install  
-and npm witt automatically find the dependencies and install it.  
+and npm will automatically find the dependencies and install it.  
   
 STEP 2:  
 then go back to EcommerceJoint1/ecommerce folder.  
@@ -34,9 +34,9 @@ npm install react-scripts
 npm install redux-persist  
 npm install --save styled-components  
   
-Except running all these ,we can also just run  
+Except running all these, we can also just run  
 npm install  
-and npm witt automatically find the dependencies and install it.  
+and npm will automatically find the dependencies and install it.  
   
 STEP 3:  
 then go to the BANKAPI folder  
@@ -54,7 +54,7 @@ npm install axios
   
 Except running all these ,we can also just run   
 npm install  
-and npm witt automatically find the dependencies and install it.  
+and npm will automatically find the dependencies and install it.  
   
 STEP 4:  
 then go to the SUPPLIER_API folder  
@@ -72,7 +72,7 @@ npm install axios
   
 Except running all these ,we can also just run   
 npm install  
-and npm witt automatically find the dependencies and install it.  
+and npm will automatically find the dependencies and install it.  
   
    
 **Running Procedure**  
