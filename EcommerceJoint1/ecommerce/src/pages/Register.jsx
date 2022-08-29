@@ -99,7 +99,9 @@ const Register = () => {
         setSubmitted(true);
         // history2("/login");
       } catch (err) {
+
         setSubmitted(false);
+        window.location = "/register";
         console.log(err);
       }
     };
