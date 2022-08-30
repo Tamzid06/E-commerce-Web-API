@@ -190,7 +190,9 @@ const OrdersProfile = () => {
     // const currentUser = useSelector((state) => state.user.currentUser);
     // const [orderId, setOrderId] = useState(null);
   
-    const [card, setCard] = useState([]);
+    
+    
+    
     var products = null;
     var amount = null;
     var cart = null;

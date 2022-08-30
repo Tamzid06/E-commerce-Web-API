@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 
 router.post("/register/",async(req,res)=>{
     console.log(req.body.username);
-    console.log(req.body.email);
     const newUser = new User({
         username : req.body.username,
         email : req.body.email,
@@ -22,12 +21,8 @@ router.post("/register/",async(req,res)=>{
         console.log(savedUser);
         res.status(201).json(savedUser);
     }catch(err){
-        console.log("____________________________");
+        res.status(500).json(err);
         console.log(err);
-        // console.log(err);
-        console.log("____________________________");
-        res.status(400).send({err,message:'Username or Email already exists'});
-        
     }
 });
 
@@ -37,16 +32,13 @@ router.post("/register/",async(req,res)=>{
 router.post("/login/",async(req,res) => {
     try{
         console.log(req.body.username);
-        // console.log(req.body.email);
         const user = await User.findOne({username: req.body.username});
-        !user && res.status(400).send({err,message:'Wrong Credential'});
-        console.log("-------------------------");
-        console.log(user);
+        !user && res.status(401).json("Wrong Credential!");
+
         const hashedPassword = CryptoJS.AES.decrypt(user.password,process.env.PASS_SEC);
         const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
         OriginalPassword !== req.body.password &&
-        res.status(400).send({err,message:'Wrong Credential'});
-        //  res.status(401).json("Wrong Credentials!");
+         res.status(401).json("Wrong Credentials!");
 
         const accessToken = jwt.sign(
             {
@@ -61,8 +53,7 @@ router.post("/login/",async(req,res) => {
         res.status(200).json({...others,accessToken});
     }catch(err){
         console.log("***************************************");
-        // res.status(500).json(err);
-        res.status(400).send({err,message:'Wrong Credential'});
+        res.status(500).json(err);
     }
     
 });

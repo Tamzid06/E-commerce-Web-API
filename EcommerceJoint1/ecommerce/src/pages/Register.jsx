@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { userRequest, userRequestBank, publicRequest } from "../requestMethods";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+// import { useForm } from "react-hook-form";
 
 const Container = styled.div`
   width: 100vw;
@@ -58,92 +59,165 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  // const { reset } = useForm();
 
   let location = useLocation();
-  const redirect = location.pathname.split("/")[1];
+  // const redirect = location.pathname.split("/")[1];
   // const redirect = location.search ? location.search.split('=')[1] : '/';
-  console.log(redirect);
+  console.log("hoooooooooooooooooooooooooooo");
   const history2 = useNavigate();
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   // const currentUser = useSelector((state) => state.user.currentUser)
 
-    // useEffect(()=>{
-    //   handleClickReg();
-    //   return()=>{
-    //     // setSubmitted(submitted);
-    //     // setEmail(email);
-    //     // setUsername(username);
-    //     // setPassword(password);
-    //   }
-    // },[]);
+  // useEffect(()=>{
+  //   handleClickReg();
+  //   return()=>{
+  //     // setSubmitted(submitted);
+  //     // setEmail(email);
+  //     // setUsername(username);
+  //     // setPassword(password);
+  //   }
+  // },[]);
 
-    const handleClickReg = async (e) => {
-      console.log("!!!!!!!!!!!!!!!!!!$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!!");
+
+
+  // useEffect(() => {
+  //   // simulate async api call with set timeout
+  // }, []);
+
+  //   useEffect(() => {
+  //     // reset form with user data
+  // }, [email,username,password]);
+
+
+
+
+
+
+  // const handleClickReg = (e) => {
+  //   console.log("!!!!!!!!!!!!!!!!!!$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!!");
+  //   console.log(email);
+  //   console.log(username);
+  //   console.log(password);
+    
+
+  //   try {
+  //     console.log("____________________*****************************____________________________");
+  //     await publicRequest.post("/auth/register",
+  //       {
+
+  //         email: email,
+  //         username: username,
+  //         password: password,
+  //       }
+
+  //     ).then();
+
+
+  //   }catch (err) {
+  //     // setSubmitted(false);
+
+  //     console.log("____________________________________________________");
+  //     console.log("____________________#####################____________________________");
+  //     console.log('Error', err.response.data);
+  //     alert(err.response.data);
+
+  //   }
+  // };
+
+
+
+
+
+
+
+
+
+
+  const handleClickReg = async (e) => {
+    e.preventDefault();
+    console.log("!!!!!!!!!!!!!!!!!!$$$$$$$$$$$$$!!!!!!!!!!!!!!!!!!!");
+    console.log(email);
+    console.log(username);
+    console.log(password);
+  
+    try {
+      console.log("____________________*****************************____________________________");
       console.log(email);
-      console.log(username);
-      console.log(password);
-      try {
-        const res = await publicRequest.post("/auth/register",
-          {
+      const res = await publicRequest.post("/auth/register",
+        {
 
-            email: email,
-            username: username,
-            password: password,
-          }
-          
-        );
-        setSubmitted(true);
-        // history2("/login");
-      } catch (err) {
-        setSubmitted(false);
-        console.log(err);
+          email: email,
+          username: username,
+          password: password,
+        }
+
+      );
+      console.log("____________________#####################____________________________");
+      // setSubmitted(true);
+      window.location = "/login";
+      // history2("/login");
+    } catch (err) {
+      // setSubmitted(false);
+
+      console.log("____________________________________________________");
+      console.log("____________________#####################____________________________");
+      console.log('Error', err.message);
+      if(err.response.data.message == 'Username or Email already exists' && password && email){
+        alert(err.response.data.message);
+      }else{
+        alert("Fill up the form");
       }
-    };
+
+      // alert(err.response.data.message);
+
+    }
+  };
 
 
 
-return (
-  <Container>
-    <Wrapper>
-      <Title>CREATE AN ACCOUNT</Title>
-      <Form>
-        
-        <Input placeholder="username"
-          onChange={(e) => {
-            setUsername(e.target.value);
-            setSubmitted(false);
-          }}
-        />
-        {/* <Input placeholder="last name" 
+  return (
+    <Container>
+      <Wrapper>
+        <Title>CREATE AN ACCOUNT</Title>
+        <Form>
+
+          <Input placeholder="username"
+            onChange={(e) => {
+              setUsername(e.target.value);
+              // setSubmitted(false);
+            }}
+          />
+          {/* <Input placeholder="last name" 
           onChange={(e) => setCardNumber(e.target.value)}
           />
           <Input placeholder="username" 
           onChange={(e) => setCardNumber(e.target.value)}
           /> */}
-        <Input placeholder="email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setSubmitted(false);
-          }}
-        />
-        <Input placeholder="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setSubmitted(false);
-          }}
-        />
-        {/* <Input placeholder="confirm password" 
+          <Input placeholder="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+              // setSubmitted(false);
+            }}
+          />
+          <Input placeholder="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+              // setSubmitted(false);
+            }}
+          />
+          {/* <Input placeholder="confirm password" 
           onChange={(e) => setCardNumber(e.target.value)}
           /> */}
-        <Agreement>
-          By creating an account, I consent to the processing of my personal
-          data in accordance with the <b>PRIVACY POLICY</b>
-        </Agreement>
-        {email && username && password ? 
+          <Agreement>
+            By creating an account, I consent to the processing of my personal
+            data in accordance with the <b>PRIVACY POLICY</b>
+          </Agreement>
+          {/* {email && username && password ? 
         <Link to="/login">
         <Button onClick={handleClickReg}>CREATE</Button>
         </Link>
@@ -151,12 +225,13 @@ return (
         <Link to="/register">
         <Button>CREATE</Button>
         </Link>
-}
-      </Form>
-    </Wrapper>
-  </Container>
-  
-);
+} */}
+          <Button onClick={handleClickReg}>CREATE</Button>
+        </Form>
+      </Wrapper>
+    </Container>
+
+  );
 };
 
 export default Register;
