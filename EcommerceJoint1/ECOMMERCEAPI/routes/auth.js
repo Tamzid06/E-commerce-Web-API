@@ -22,7 +22,11 @@ router.post("/register/",async(req,res)=>{
         console.log(savedUser);
         res.status(201).json(savedUser);
     }catch(err){
+<<<<<<< HEAD
         console.log("____________________________");
+=======
+        // res.status(500).json(err);
+>>>>>>> 49e205fe7cbf82a8068e4a0ac95ed13f7bdd20ce
         console.log(err);
         // console.log(err);
         console.log("____________________________");
