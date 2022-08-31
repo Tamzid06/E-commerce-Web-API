@@ -31,9 +31,9 @@ const CryptoJS = require("crypto-js");
         );
         console.log("endddddddddddddddddddddddddddddddddd")
         console.log(updatedUser);
-        res.status(200).json(updatedUser);
+        res.status(400).send({updatedUser,message:'User Updated'});
     }catch(err){
-        res.status(500).json(err);
+        res.status(400).send({updatedUser,message:'User Update Failed'});
     }
 });
 

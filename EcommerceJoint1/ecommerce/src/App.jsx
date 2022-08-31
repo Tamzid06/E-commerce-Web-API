@@ -6,6 +6,7 @@ import Balance from './pages/Balance';
 import Register from './pages/Register';
 import BankInfoAdd from './pages/BankInfoAdd';
 import Product from "./pages/Product";
+import OOrders from "./pages/testOrders";
 import ProductList from "./pages/ProductList";
 import OrdersProfile from "./pages/ordersProfile";
 import UpdateProfile from "./pages/updateProfile";
@@ -60,6 +61,7 @@ const App = () => {
       <Route  path="/orders" element={<OrdersProfile/>}/>
       <Route  path="/profile" element={<UpdateProfile/>}/>
       <Route  path="/balance" element={<Balance/>}/>
+      {/* <Route  path="/test" element={<OOrders/>}/> */}
 
       </Routes>
     </Router>

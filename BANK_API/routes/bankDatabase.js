@@ -66,13 +66,15 @@ router.post("/adding/",async(req,res)=>{
 
         let savedUser = await newUser.save();
         console.log(savedUser);
-        res.status(201).json(savedUser);
+        // res.status(201).json(savedUser);
+        res.status(400).send({savedUser,message:'Wrong Credential'});
         console.log("%%%%%%%%%%%%%%%%%");
         // console.log(email);
 
     }catch(err){
         console.log(err);
-        res.status(500).json(err);
+        // res.status(400).json(err);
+        res.status(400).send({err,message:'Wrong Credential'});
     }
 });
 

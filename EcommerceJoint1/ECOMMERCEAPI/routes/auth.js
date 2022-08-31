@@ -8,6 +8,8 @@ const jwt = require("jsonwebtoken");
 router.post("/register/",async(req,res)=>{
     console.log(req.body.username);
     console.log(req.body.email);
+    console.log(req.body.password);
+    // req.body.password == null || req.body.email == null || req.body.username == null && res.status(400).send({message:'No password'});
     const newUser = new User({
         username : req.body.username,
         email : req.body.email,
@@ -15,18 +17,23 @@ router.post("/register/",async(req,res)=>{
         card_no: "",
         card_pin: "",
     });
+   
+    const errr = "error";
 
     try{
+        if(req.body.password == null || req.body.email == null || req.body.username == null){
+            res.status(400).send({errr,message:'No password'});
+        }else{
         const savedUser = await newUser.save();
         console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         console.log(savedUser);
         res.status(201).json(savedUser);
+        }
     }catch(err){
-<<<<<<< HEAD
+
         console.log("____________________________");
-=======
         // res.status(500).json(err);
->>>>>>> 49e205fe7cbf82a8068e4a0ac95ed13f7bdd20ce
+
         console.log(err);
         // console.log(err);
         console.log("____________________________");

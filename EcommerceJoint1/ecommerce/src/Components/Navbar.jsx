@@ -84,55 +84,25 @@ const Navbar = () => {
 
   }
   const quantity = useSelector(state => state.cart.quantity)
-  // return (
-  //   <Container>
-  //     <Wrapper>
-  //       <Left>
-  //         <Language>EN</Language>
-  //         <SearchContainer>
-  //           <Input/>
-  //           <Search style={{color:"gray",fontSize:16}}/>
-  //         </SearchContainer>
-  //         <Link to="/profile">
-  //         <MenuItem>Profile</MenuItem>
-  //         </Link>
-  //       </Left>
-  //       <Center><Logo>D-Valy</Logo></Center>
-  //       <Right>
-  //         <Link to="/register">
-  //         {/* <MenuItem>{currentUser? "" : "REGISTER"}</MenuItem> */}
-  //         <MenuItem>REGISTER</MenuItem>
-  //         </Link>
-  //         {/* <button onClick={() => {
-  //         persistor.purge();
-  //       }}> */}
-  //         <MenuItem onClick={() => {
-  //         persistor1.purge();
-  //       }}>{currentUser? "LOG OUT" : "SIGN IN"}</MenuItem>
-  //         {/* </button> */}
-  //         <Link to="/cart">
-  //         <MenuItem>
-  //         <Badge badgeContent={quantity} color="primary">
-  //         <ShoppingCartOutlined/>
-  //         </Badge>
-  //         </MenuItem>
-  //         </Link>
-  //       </Right>
-  //     </Wrapper>
-  //   </Container>
-  // )
-
-
+  const cart = useSelector((state) => state.cart);
   return (
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input />
+          {/* <Language>EN</Language>
+          <SearchContainer> */}
+          {/* <Input />
             <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
+          </SearchContainer> */}
 
+          <MenuItem>
+            <Link to="/">
+              <Button>
+                HOME
+              </Button>
+
+            </Link>
+          </MenuItem>
 
           <MenuItem>
             {currentUser ?
@@ -144,9 +114,9 @@ const Navbar = () => {
 
               :
               <Link to="/">
- 
+
               </Link>
-          }
+            }
           </MenuItem>
 
           <MenuItem>
@@ -159,9 +129,9 @@ const Navbar = () => {
 
               :
               <Link to="/">
- 
+
               </Link>
-          }
+            }
           </MenuItem>
 
           <MenuItem>
@@ -174,9 +144,9 @@ const Navbar = () => {
 
               :
               <Link to="/">
- 
+
               </Link>
-          }
+            }
           </MenuItem>
 
 
@@ -220,14 +190,26 @@ const Navbar = () => {
               </Link>
 
             }
+
           </MenuItem>
-          <Link to="/cart">
-            <MenuItem>
-              <Badge badgeContent={quantity} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </MenuItem>
-          </Link>
+          {quantity > 0 ?
+            <Link to="/cart">
+              <MenuItem>
+                <Badge badgeContent={quantity} color="primary">
+                  <ShoppingCartOutlined />
+                </Badge>
+              </MenuItem>
+            </Link>
+            :
+
+            <Link to="/">
+              <MenuItem>
+                <Badge badgeContent={quantity} color="primary">
+                  <ShoppingCartOutlined />
+                </Badge>
+              </MenuItem>
+            </Link>
+          }
         </Right>
       </Wrapper>
     </Container>

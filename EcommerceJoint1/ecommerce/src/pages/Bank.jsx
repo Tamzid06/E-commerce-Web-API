@@ -138,9 +138,10 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 30px;
   border-radius: 10px;
   font-weight: bold;
+
   
   
 `;
@@ -165,6 +166,8 @@ const MenuItem = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   justifyContent: "space-between" 
+  align-items: center;
+  flex-direction: row;
 
 `
 
@@ -180,6 +183,7 @@ const Bank = () => {
 
   
   const handleClick = async (e) => {
+    e.preventDefault();
     console.log("_________________________________");
     console.log(currentUser.email);
     console.log(currentUser._id);
@@ -197,10 +201,12 @@ const Bank = () => {
       );
       
    
-      // window.location="/login/";
+      window.location="/";
       
     } catch(err) {
       console.log(err);
+      alert(err.response.data.message);
+      window.location="/";
     }
   };
 
@@ -236,8 +242,8 @@ const Bank = () => {
 
         
         <ButtonGroup>
-        <Button onClick={handleClick}>CREATE</Button>
-        <Button onClick={handleClickHOME}>HOME</Button>
+        <Button onClick={handleClick}>ADD</Button>
+        {/* <Button onClick={handleClickHOME}>HOME</Button> */}
         <Button onClick={handleClickBALANCE}>BALANCE</Button>
         </ButtonGroup>
 

@@ -81,6 +81,7 @@ const InfoAdd = () => {
 
   
   const handleClick = async (e) => {
+    e.preventDefault();
     console.log("_________________________________");
     console.log(currentUser.email);
     try {

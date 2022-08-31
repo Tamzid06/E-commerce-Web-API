@@ -303,10 +303,9 @@ const Success = () => {
             <SummaryItemPrice>tk {total > 0 ? total - 100 + 70 : 0}</SummaryItemPrice>
           </SummaryItem>
           <Link to = "/">
-          <Button onClick={makeRequest}>CHECKOUT NOW</Button>
+          <Button  onClick={makeRequest}>CHECKOUT NOW</Button>
           </Link>
-          
-        
+         
         </Summary>
       </Bottom>
     </Wrapper>

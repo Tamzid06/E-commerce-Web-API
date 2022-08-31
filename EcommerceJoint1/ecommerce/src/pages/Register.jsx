@@ -151,7 +151,6 @@ const Register = () => {
       const res = await publicRequest.post("/auth/register",
         {
 
-<<<<<<< HEAD
           email: email,
           username: username,
           password: password,
@@ -170,23 +169,10 @@ const Register = () => {
       console.log('Error', err.message);
       if(err.response.data.message == 'Username or Email already exists' && password && email){
         alert(err.response.data.message);
+      }else if(err.response.data.message == 'No password'){
+        alert("Fill up the form");
       }else{
         alert("Fill up the form");
-=======
-            email: email,
-            username: username,
-            password: password,
-          }
-          
-        );
-        setSubmitted(true);
-        // history2("/login");
-      } catch (err) {
-
-        setSubmitted(false);
-        window.location = "/register";
-        console.log(err);
->>>>>>> 49e205fe7cbf82a8068e4a0ac95ed13f7bdd20ce
       }
 
       // alert(err.response.data.message);

@@ -4,70 +4,61 @@ import { login } from "../redux/apiCalls";
 import { useNavigate } from 'react-router-dom';
 import { userRequest, userRequestBank } from "../requestMethods";
 import { useEffect, useState } from "react";
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://i.ibb.co/W6gX2m3/pexels-sergij-217316.jpg")
-      center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+import Footer from "../Components/Footer";
+import Navbar from '../Components/Navbar'
+
+const Card = styled.div `
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+`
+
+const Title = styled.div`
+color: black;
+font-size: 24px;
+margin-top: 5px;
+height:50px;
+text-align: center;
+font-weight: 500;
+`
+
+const Container2 = styled.div`
+font-family: sans-serif;
+text-align: center;
 `;
 
-const Wrapper = styled.div`
-  width: 25%;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 0 20px #000;
-  border:1px solid #000;
-  border-radius: 25px;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-`;
-
-const Button = styled.button`
-  width: 40%;
+const OutText = styled.button`
   border: none;
-  padding: 15px 20px;
-  background-color: teal;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
   color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  font-weight: bold;
-  
-`;
+  background-color: #000;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 10px;
+  transition: all 0.8s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+`
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
+const a = styled.div` 
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  &:hover {
+    transform: scale(1.1);
+  }
+`
 
-
-
+// button:hover,
+// a:hover {
+//   transform: scale(1.1);
+// }
 
 
 const Balance = () => {
@@ -112,40 +103,54 @@ const Balance = () => {
 
 
     return (
-        <Container>
-            <Wrapper>
-                <Title>Bank Information</Title>
-                <Title>Bank Balace</Title>
-                {/* {balance ?
-                    <p1>User Balance:{balance.balance_user}</p1>
+        // <Container>
+        //     <Wrapper>
+        //         <Title>Bank Information</Title>
+        //         <Title>Bank Balace</Title>
+        //         {/* {balance ?
+        //             <p1>User Balance:{balance.balance_user}</p1>
 
 
-                    :
-                    <p1>User Balance:  ERROR ( Register to Bank )</p1>
-                }
+        //             :
+        //             <p1>User Balance:  ERROR ( Register to Bank )</p1>
+        //         }
 
 
-                {balance ?
-                    <p1>Ecommerce Balance:{balance.balance_}</p1>
+        //         {balance ?
+        //             <p1>Ecommerce Balance:{balance.balance_}</p1>
 
 
-                    :
-                    <p1>Ecommerce Balance:  ERROR ( Register to Bank )</p1>
-                }
+        //             :
+        //             <p1>Ecommerce Balance:  ERROR ( Register to Bank )</p1>
+        //         }
 
-                {balance ?
-                    <p1>User Balance:{balance.balance_sup}</p1>
+        //         {balance ?
+        //             <p1>User Balance:{balance.balance_sup}</p1>
 
 
-                    :
-                    <p1>Supplier Balance:  ERROR ( Register to Bank )</p1>
-                } */}
-                <Title>User Balance:{balance.balance_user}</Title>
-                <Title>Ecommerce Balance:{balance.balance_ecom}</Title>
-                <Title>Supplier Balance:{balance.balance_sup}</Title>
+        //             :
+        //             <p1>Supplier Balance:  ERROR ( Register to Bank )</p1>
+        //         } */}
+        //         <Title>User Balance:{balance.balance_user}</Title>
+        //         <Title>Ecommerce Balance:{balance.balance_ecom}</Title>
+        //         <Title>Supplier Balance:{balance.balance_sup}</Title>
 
-            </Wrapper>
-        </Container>
+        //     </Wrapper>
+        // </Container>
+
+        <div>
+        <Navbar/>
+      <Container2>  
+        <Card>
+          <Title>BALANCE</Title>
+            <OutText>User Balance:{balance.balance_user}</OutText>
+            <OutText>Ecommerce Balance:{balance.balance_ecom}</OutText>
+            <OutText>Supplier Balance:{balance.balance_sup}</OutText>
+           
+        </Card>
+        </Container2>
+        <Footer/>
+        </div>
     );
 };
 

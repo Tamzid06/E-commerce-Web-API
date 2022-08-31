@@ -16,7 +16,7 @@ const Container = styled.div`
 const Announcement = () => {
   return (
     <Container>
-      This is an site of web project
+      This is a site of web project of 2017331006 & 2017331026
     </Container>
   )
 }

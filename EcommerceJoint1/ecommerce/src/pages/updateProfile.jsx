@@ -4,6 +4,7 @@ import { userRequest, userRequestBank, publicRequest } from "../requestMethods";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Navbar from "../Components/Navbar";
 const CryptoJS = require("crypto-js");
 
 
@@ -152,9 +153,12 @@ const UpdateProfile = () => {
 
     const it = "sssssss";
     return (
+      <div>
+        <Navbar/>
         <Container>
+          
             <Wrapper>
-                <Title>CREATE AN ACCOUNT</Title>
+                <Title>ACCOUNT DETAILS</Title>
                 <Form>
 
                     <Input placeholder={us}
@@ -204,7 +208,7 @@ const UpdateProfile = () => {
                 </Form>
             </Wrapper>
         </Container>
-
+        </div>
     );
 };
 

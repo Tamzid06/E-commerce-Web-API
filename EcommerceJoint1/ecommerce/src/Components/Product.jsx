@@ -23,6 +23,7 @@ const Info = styled.div`
 `;
 const Price = styled.div`
   font-weight: 600;
+
 `;
 
 const mainContainer = styled.div`
@@ -93,8 +94,8 @@ const Product = ({ item }) => {
         </Icon>
       </Info>
     </Container>
-    <Price>TITLE:{item.title}</Price>
-    <Price>PRICE:{item.price}tk</Price>
+    <Price>{item.title}</Price>
+    <Price>{item.price}tk</Price>
     </mainContainer>
   );
 };

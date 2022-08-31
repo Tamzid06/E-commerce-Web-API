@@ -1,7 +1,7 @@
 export const sliderItems = [
   {
     id: 1,
-    img: "https://i.ibb.co/PYmjw2B/pngwing-com.png",
+    img: "https://i.ibb.co/5Rt68V5/shp2.png",
     title: "BE OUR CUSTOMER",
     desc: "GET FLAT 20% OFF FOR FIRST ORDER",
     bg: "f5fafd",
@@ -15,7 +15,7 @@ export const sliderItems = [
   },
   {
     id: 3,
-    img: "https://i.ibb.co/HxP74ng/Seek-Png-com-american-football-player-silhouette-492463.png",
+    img: "https://i.ibb.co/0cwG3p8/sports.png",
     title: "DISCOUNT ON SPORTS ITEM",
     desc: "GET FLAT 30% OFF FOR SPORTS ITEM.",
     bg: "fbf0f4",
